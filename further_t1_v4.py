@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 #_____________________________
 # parameters
 #_____________________________
-
 N = 500
 w_inhib = -1.0
 tau = 1.0
@@ -13,24 +12,15 @@ dt = 0.05
 R = np.pi / 8
 h_base = 0.0
 h_vec_base = np.full(N, h_base)
-
 seed_init = 0
 seed_off  = 1
-
-
 ON_WINDOW  = 100
 OFF_WINDOW = 100
-
-
 ZERO_THR = 0.12
-
-
 REL_TOL_ON  = 0.02
 REL_TOL_OFF = 0.50
-
 MAX_STEPS_ON  = 50000
 MAX_STEPS_OFF = 50000
-
 h_on = 2.0
 noise_shift = -2.0
 
@@ -86,7 +76,7 @@ def init_and_stabilize(pre_steps=6000):
     return s
 
 #___________________________________________
-# Task 2: minimal ON duration
+# minimal ON duration
 #___________________________________________
 
 def on_condition_stable(max_hist, eps_nonzero=1e-2, rel_tol=REL_TOL_ON):
@@ -115,7 +105,7 @@ def find_on_steps(s0, h_on=h_on, max_steps=MAX_STEPS_ON, window=ON_WINDOW):
     return None, s
 
 #______________________________________________
-# Task 3: minimal OFF duration (hover around zero)
+# minimal OFF duration (hover around zero)
 #______________________________________________
 
 def off_condition_zero(max_hist, zero_thr=ZERO_THR, rel_tol=REL_TOL_OFF):
@@ -229,3 +219,4 @@ if off_steps_min is not None:
     plt.title("OFF period: bump angle vs time (same OFF time axis)")
     plt.tight_layout()
     plt.show()
+
